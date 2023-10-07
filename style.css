@@ -44,7 +44,7 @@ a {
 /*top title (h1) section */
 #top-title{
     text-align: center;
-    padding: 10px;
+    padding: 23px;
     background-color: #ffd900;
     color: #03108a;
     font-family: 'Julius Sans', sans-serif;
@@ -56,12 +56,20 @@ a {
     justify-content: center;
     gap: 10px;
     align-items: center;
-    padding: 10px;
+    padding: 30px;
     background-color: #38558f;
+}
+#filter-container{
+    display:flex;
+    flex-direction: column;
+}
+label{
+    display: block;
+    padding: 5px;
 }
 #search-bar{
     border-radius: 20px;
-    width: 200px;
+    width: 250px;
     height: 25px;
 }
 #search-bar-push{
@@ -73,3 +81,67 @@ a {
     border-style: none;
     border: 1px solid #1073dc;
 }
+
+#filter-container,
+#dropdown-sort{
+    border-radius: 20px;
+    width: 250px;
+    height: 25px;
+    color:#fff;
+}
+/*Cards*/
+#card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 50px 80px 50px;
+    flex-wrap: wrap;
+    gap: 40px;
+    background-color: #9ab3ce;
+    border-radius: 20px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    box-shadow: 0 0 .4rem .5rem rgba(0, 0, 0, 0.2);
+    transition: .4s ease-in;
+    width: 200px;
+    height: 300px;
+    flex-wrap: 5px;
+    gap: 5px;
+    border-radius: 5px;
+    border: 4px solid rgb(55, 105, 143);
+    margin-top: 40px;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+.card:hover{
+    background: rgb(255, 252, 244);
+    border: 4px solid  rgb(255, 225, 0);
+}
+.card-heading{
+    color: rgb(192, 0, 0);
+    font-weight: 700;
+    font-size: 20px;
+}
+.card-subheading,
+.card-end{
+    color:rgb(16, 5, 61);
+    font-size: 14px;
+    font-weight: 700;
+}
+#card-subheading-type{
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 13px;
+    color: #fff;
+    background-color:rgb(55, 105, 143);
+}
+.card-img{
+    width:60%;
+}
+
+

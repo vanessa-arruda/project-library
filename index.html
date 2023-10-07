@@ -19,20 +19,28 @@
           <li><button id="login">LOG IN</button></li>
       </ul>
     </section>
-    <section class="main-title-bar-container">
+    <section class="title-bar-container">
       <h1 id="top-title">Pokémon | My Pokédex</h1>
     </section>
+    <!--Container for the filter, sort list and search bar-->
     <section>
       <div class="filter-search-container">
-        <div>filter</div>
-        <div>sort</div>
-        <section class="search-container">
+        <div id="filter-container">
+          <label for="filter-region-select">Region</label>
+          <select id="filter-region-select">
+          </select>
+        </div>
+        <div id="dropdown-sort">Sortlist</div>
+        <div id="search-container">
           <input id="search-bar" type="text" placeholder="Search...">
           <button id="search-bar-push">Find</button>
-        </section>
+        </div>
       </div>
     </section>
-    <section id="pokedex-container"></section>
+    <!--Container for all cards-->
+      <section id="card-container">
+      </section>
+    <!--JS here-->
     <script type="text/JavaScript" src="script.js"></script>
   </body>
 </html>
