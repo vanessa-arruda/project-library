@@ -36,10 +36,16 @@ a {
     background-color: #ffd900;
     color: rgb(33, 64, 88); 
     border-radius: 20px;
-    padding: 8px 30px;
+    padding: 8px 20px;
     font-weight: bold;
     border-style: none;
     border: 1px solid #1073dc;
+    cursor:pointer;
+    transition: .3s ease-in;
+}
+#login:hover{
+    background-color:#f0eba1;
+    
 }
 /*top title (h1) section */
 #top-title{
@@ -106,6 +112,13 @@ label{
     border-style: none;
     border: 1px solid #1073dc;
     margin-top: 10px;
+    transition: .4s ease-in;
+}
+#search-btn{
+    cursor:pointer;
+}
+#search-btn:hover{
+    background-color: #5cb6f5;
 }
 /*Cards*/
 #card-container{
@@ -125,7 +138,7 @@ label{
     justify-content: space-between;
     padding: 2rem;
     box-shadow: 0 0 .4rem .5rem rgba(0, 0, 0, 0.2);
-    transition: .4s ease-in;
+    transition: .3s ease-in;
     width: 200px;
     height: 300px;
     flex-wrap: 5px;
@@ -160,7 +173,7 @@ label{
     font-size: 14px;
     font-weight: 700;
 }
-#card-subheading-type{
+.card-subheading-type{
     border-radius: 10px;
     padding: 5px;
     font-size: 13px;
@@ -170,5 +183,36 @@ label{
 .card-img{
     width:60%;
 }
-
-
+.grass {
+    background-color: green;
+}
+.water {
+    background-color: rgb(47, 122, 188);
+}
+.fire {
+    background-color: orange;
+}
+.ghost{
+    background-color: grey;
+}
+.normal{
+    background-color: rgb(182, 182, 182);
+    color: black;
+}
+.electric{
+    background-color: rgb(240, 212, 0);
+    color: black;
+}
+.bug{
+    background-color: #578258;
+}
+.psychic{
+    background-color: #84537b;
+}
+.ice {
+    background-color: rgb(40, 233, 243);
+    color:#03108a;
+}
+.rock{
+    background-color: #91715b;
+}

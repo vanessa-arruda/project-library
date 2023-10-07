@@ -149,79 +149,109 @@ const pokemons = [
 const cardContainer = document.getElementById('card-container');
 const filterRegionElem = document.getElementById('filter-region');
 const filterTypeElem = document.getElementById('filter-type');
-const pokemonTypes = document.getElementById('card-subheading-type');
 const sortAscElem = document.getElementById('sortlist');
+const searchBtn = document.getElementById('search-btn');
+const searchBar = document.getElementById('search-bar');
 
 //FUNCTIONS
 //create dynamic cards
 const loadPokemon = (pokemons) => {
   cardContainer.innerHTML = "";
-  //iterate and add one card for each existent object and 
-  //define the HTML structure of the card using template literal
-  pokemons.forEach((pokemon) => {
-    cardContainer.innerHTML += `
-    <div class="card">
-      <h3 class="card-heading">${pokemon.name} | Id: 0${pokemon.id}</h3>
-      <p class="card-maxcp">Max CP: ${pokemon.maxcp}</p>
-      <p class="card-subheading">Region: ${pokemon.region}</p>
-      <p id="card-subheading-type">Type: ${pokemon.type}</p>
-      <img class="card-img" src=${pokemon.image}>
-      <p class="card-end">Evolution status: ${pokemon.evolution ? "Can evolve" : "Max level"}</p>
-    </div>`;
-  });
+
+  if(pokemons.length === 0){
+    cardContainer.innerHTML = "Oops! No pokemons found!";
+  }else{
+    //iterate and add one card for each existent object and 
+    //define the HTML structure of the card using template literal
+    pokemons.forEach((pokemon) => {
+      cardContainer.innerHTML += `
+      <div class="card">
+        <h3 class="card-heading">${pokemon.name} | Id: 0${pokemon.id}</h3>
+        <p class="card-maxcp">Max CP: ${pokemon.maxcp}</p>
+        <p class="card-subheading">Region: ${pokemon.region}</p>
+        <p class="card-subheading-type ${pokemon.type?.toLowerCase()}">Type: ${pokemon.type}</p>
+        <img class="card-img" src=${pokemon.image}>
+        <p class="card-end">Evolution status: ${pokemon.evolution ? "Can evolve" : "Max level"}</p>
+      </div>`;
+    });
+  }
 }
 //FILTER by Region
-const filterRegion = () => {
+const filterRegion = (pokemonsList) => {
   const valueRegion = filterRegionElem.value;
 
   if(valueRegion === "all"){
-    loadPokemon(pokemons);
+    return pokemonsList;
   } else {
-    const filteredListRegion = pokemons.filter((pokemon) => pokemon.region === valueRegion);
-
-    loadPokemon(filteredListRegion);
+    return pokemonsList.filter((pokemon) => pokemon.region === valueRegion);
   };
 }
 //FILTER by Type
-const filterType = () => {
+const filterType = (pokemonsList) => {
   const valueType = filterTypeElem.value;
 
   if(valueType === "all"){
-    loadPokemon(pokemons);
+    return pokemonsList;
   } else {
-    const filteredListType = pokemons.filter((pokemon) => pokemon.type === valueType);
-    loadPokemon(filteredListType);
+    return pokemonsList.filter((pokemon) => pokemon.type === valueType);
   };
 }
 //SORTLIST
-const sortPokemons = () => {
+const sortPokemons = (pokemonsList) => {
   const sortChoice = sortAscElem.value;
+  let orderedList = [];
 
   if(sortChoice === "nameasc"){
-    const orderListAsc = [...pokemons].sort((a, b) => a.name > b.name ? 1 : -1);
-    loadPokemon(orderListAsc);
+    orderedList = pokemonsList.sort((a, b) => a.name > b.name ? 1 : -1);
   }else if(sortChoice === "namedesc"){
-    orderListAsc = [...pokemons].sort((a, b) => a.name > b.name ? 1 : -1);
-    loadPokemon(orderListAsc.reverse());
+    orderedList = pokemonsList.sort((a, b) => a.name > b.name ? 1 : -1);
+    orderedList.reverse();
   }else if(sortChoice === "idasc"){
-    orderListAsc = [...pokemons].sort((a, b) => a.id > b.id ? 1 : -1);
-    loadPokemon(orderListAsc);
+    orderedList = pokemonsList.sort((a, b) => a.id > b.id ? 1 : -1);
   }else if(sortChoice === "iddesc"){
-    orderListAsc = [...pokemons].sort((a, b) => a.id > b.id ? 1 : -1);
-    loadPokemon(orderListAsc.reverse());
+    orderedList = pokemonsList.sort((a, b) => a.id > b.id ? 1 : -1);
+    orderListAsc.reverse();
   }else if(sortChoice === "maxcpasc"){
-    orderListAsc = [...pokemons].sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
-    loadPokemon(orderListAsc);
+    orderedList = pokemonsList.sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
   }else if(sortChoice === "maxcpdesc"){
-    orderListAsc = [...pokemons].sort((a, b) => a.maxcp > b.maxcp ? 1 : -1)
-    loadPokemon(orderListAsc.reverse());
+    orderedList = pokemonsList.sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
+    orderListAsc.reverse();
   }
+  return orderedList;
 }
-//SEARCH BAR - to be implemented
+//SEARCH BAR
+const search = () => {
+  filterRegionElem.value = "all";
+  filterTypeElem.value = "all";
+  sortAscElem.value = "nameasc";
+
+  let searchResult = [...pokemons];
+  let searchInput = searchBar.value;
+  if(searchInput && searchInput.trim().length > 0){
+    searchInput = searchInput.trim().toLowerCase();
+    searchResult = pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(searchInput));
+  }
+  loadPokemon(searchResult);
+}
+//Create function to apply multiple filters + sorting
+const applyFilters = () => {
+  let filteredList = [...pokemons];
+
+  filteredList = filterRegion(filteredList);
+  filteredList = filterType(filteredList);
+  filteredList = sortPokemons(filteredList);
+  //for filters + sort
+  loadPokemon(filteredList);
+}
 //EVENTS
-filterRegionElem.addEventListener("change", filterRegion);
-loadPokemon(pokemons);
-filterTypeElem.addEventListener("change", filterType);
-loadPokemon(pokemons);
-sortAscElem.addEventListener("change", sortPokemons);
+filterRegionElem.addEventListener("change", applyFilters);
+filterTypeElem.addEventListener("change", applyFilters);
+sortAscElem.addEventListener("change", applyFilters);
+searchBtn.addEventListener("click", search);
+//listener for the 'Enter' key for search bar
+searchBar.addEventListener("keyup", (e) => {
+  if(e.key =="Enter") {search()}
+});
+
+//for cards
 loadPokemon(pokemons);
