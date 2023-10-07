@@ -15,7 +15,7 @@
     max-width: 100%;
 }
 #logo-img{
-    max-width: 25%;
+    width: 200px;
     padding-left: 20px;
 }
 a {
@@ -183,6 +183,7 @@ label{
 .card-img{
     width:60%;
 }
+/* classes for pokemon type colors */
 .grass {
     background-color: green;
 }
@@ -215,4 +216,71 @@ label{
 }
 .rock{
     background-color: #91715b;
+}
+/* small screens devices */
+@media screen and (max-width: 480px){
+    .top-bar-header {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 10px 0 10px 0;
+    }
+    #logo-img{
+        max-width: 85%;
+    }
+    a {
+        text-decoration:none;
+        color: #fff;
+        font-size: 13px;
+        padding-bottom: 5px;
+    }
+    #top-bar-links{
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+    }
+    #login {
+        padding: 4px 14px;
+        font-weight: bold;
+        border-style: none;
+        cursor:pointer;
+        transition: .3s ease-in;
+    }
+    #top-title{
+        font-size: 28px;
+    }
+    /* .filter-sort-search-container{
+    
+    } */
+    #filter-container{
+        width:310px;
+        font-size: 13px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    #filter-region,
+    #filter-type,
+    #sortlist{
+        width: 80px;
+    }
+
+    #search-bar{
+        width: 70%;
+    }
+    #card-container{
+        margin-left: 30px;
+    }
+    .card {
+        width: 50%;
+        height: auto;
+    }
+    .card-heading{
+        font-size: 16px;
+    }
+    .card-subheading,
+    .card-end{
+        font-size: 11px;
+    }
 }
