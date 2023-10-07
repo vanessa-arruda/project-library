@@ -210,12 +210,12 @@ const sortPokemons = (pokemonsList) => {
     orderedList = pokemonsList.sort((a, b) => a.id > b.id ? 1 : -1);
   }else if(sortChoice === "iddesc"){
     orderedList = pokemonsList.sort((a, b) => a.id > b.id ? 1 : -1);
-    orderListAsc.reverse();
+    orderedList.reverse();
   }else if(sortChoice === "maxcpasc"){
     orderedList = pokemonsList.sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
   }else if(sortChoice === "maxcpdesc"){
     orderedList = pokemonsList.sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
-    orderListAsc.reverse();
+    orderedList.reverse();
   }
   return orderedList;
 }
