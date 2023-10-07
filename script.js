@@ -1,6 +1,4 @@
-/*Here we have created two different arrays that you can work with if you want.
-If you choose to create your own arrays with elements, just make sure that some
-of the properties make sense to filter on, and some to sort on.*/
+//Array of objects
 const pokemons = [
   {
     name: 'Bulbasaur',
@@ -147,26 +145,24 @@ const pokemons = [
     image: './pokemon-images/banette.png',
   }
 ];
-
-// Create the global variables
+//GLOBAL VARIABLES - get elements
 const cardContainer = document.getElementById('card-container');
-const filterRegionElement = document.getElementById('filter-region-select');
-const sortDropdown = document.getElementById('dropdown-sort');
-//const pokemonTypes = document.getElementById('card-subheading-type');
+const filterRegionElem = document.getElementById('filter-region');
+const filterTypeElem = document.getElementById('filter-type');
+const pokemonTypes = document.getElementById('card-subheading-type');
+const sortAscElem = document.getElementById('sortlist');
 
 //FUNCTIONS
-//create the cards for each object in the Array and add one param of the expected array
+//create dynamic cards
 const loadPokemon = (pokemons) => {
-//first: empty the container of any possible content
   cardContainer.innerHTML = "";
-
   //iterate and add one card for each existent object and 
   //define the HTML structure of the card using template literal
   pokemons.forEach((pokemon) => {
-    
     cardContainer.innerHTML += `
     <div class="card">
       <h3 class="card-heading">${pokemon.name} | Id: 0${pokemon.id}</h3>
+      <p class="card-maxcp">Max CP: ${pokemon.maxcp}</p>
       <p class="card-subheading">Region: ${pokemon.region}</p>
       <p id="card-subheading-type">Type: ${pokemon.type}</p>
       <img class="card-img" src=${pokemon.image}>
@@ -174,30 +170,58 @@ const loadPokemon = (pokemons) => {
     </div>`;
   });
 }
+//FILTER by Region
+const filterRegion = () => {
+  const valueRegion = filterRegionElem.value;
 
-loadPokemon(pokemons);
+  if(valueRegion === "all"){
+    loadPokemon(pokemons);
+  } else {
+    const filteredListRegion = pokemons.filter((pokemon) => pokemon.region === valueRegion);
 
-//Automate filter <options> creation to use multiple filters
-//used region property as reference for this filter
-const createFilters = () => {
-  //start with empty array 
-  const availableRegions = [];
-
-  //for...of (iterate in the pokemons array to check if the region is listed,
-  //if not, add it to the filtered array.
-  for (const pokemon of pokemons){
-    if(!availableRegions.includes(pokemon.region)){
-      availableRegions.push(pokemon.region);
-    }
-  }
-  console.log(availableRegions);
-
-  filterRegionElement.innerHTML = `
-  <option value="all">All</option>`;
-  availableRegions.forEach((region) => {
-    filterRegionElement.innerHTML+= `<option value="${region}">${region}</option>`;
-  });
+    loadPokemon(filteredListRegion);
+  };
 }
-createFilters();
+//FILTER by Type
+const filterType = () => {
+  const valueType = filterTypeElem.value;
 
-//create sortlist
+  if(valueType === "all"){
+    loadPokemon(pokemons);
+  } else {
+    const filteredListType = pokemons.filter((pokemon) => pokemon.type === valueType);
+    loadPokemon(filteredListType);
+  };
+}
+//SORTLIST
+const sortPokemons = () => {
+  const sortChoice = sortAscElem.value;
+
+  if(sortChoice === "nameasc"){
+    const orderListAsc = [...pokemons].sort((a, b) => a.name > b.name ? 1 : -1);
+    loadPokemon(orderListAsc);
+  }else if(sortChoice === "namedesc"){
+    orderListAsc = [...pokemons].sort((a, b) => a.name > b.name ? 1 : -1);
+    loadPokemon(orderListAsc.reverse());
+  }else if(sortChoice === "idasc"){
+    orderListAsc = [...pokemons].sort((a, b) => a.id > b.id ? 1 : -1);
+    loadPokemon(orderListAsc);
+  }else if(sortChoice === "iddesc"){
+    orderListAsc = [...pokemons].sort((a, b) => a.id > b.id ? 1 : -1);
+    loadPokemon(orderListAsc.reverse());
+  }else if(sortChoice === "maxcpasc"){
+    orderListAsc = [...pokemons].sort((a, b) => a.maxcp > b.maxcp ? 1 : -1);
+    loadPokemon(orderListAsc);
+  }else if(sortChoice === "maxcpdesc"){
+    orderListAsc = [...pokemons].sort((a, b) => a.maxcp > b.maxcp ? 1 : -1)
+    loadPokemon(orderListAsc.reverse());
+  }
+}
+//SEARCH BAR - to be implemented
+//EVENTS
+filterRegionElem.addEventListener("change", filterRegion);
+loadPokemon(pokemons);
+filterTypeElem.addEventListener("change", filterType);
+loadPokemon(pokemons);
+sortAscElem.addEventListener("change", sortPokemons);
+loadPokemon(pokemons);
