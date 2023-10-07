@@ -28,7 +28,7 @@ In order to simplify the execution of this project, we have provided you with tw
 
 ## Stretch Goals
 
-So you’ve completed all the steps above? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
+So you’ve completed all  the steps above? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
 
 ### Intermediate stretch goals
 - Go wild with the filtering. Add a filter to:

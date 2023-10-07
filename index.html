@@ -1,13 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Don't forget to change the title and connect the CSS file -->
-  <title>Project Library</title>
-</head>
-<body>
-  <h1>Project Library</h1>
-  <!-- Don't forget to connect the JavaScript file -->
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="./html-images/favicon.ico">
+    <title>My Pokédex</title>
+  </head>
+  <body>
+    <!--Logo and top nav bar section-->
+    <section class="top-bar-header">
+      <div class="logo-container">
+        <img id="logo-img" src="./html-images/pokemon-go-logo.png">
+      </div>
+      <ul id="top-bar-links">
+          <li><a href="#">News</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Create Account</a></li>
+          <li><button id="login">LOG IN</button></li>
+      </ul>
+    </section>
+    <!--Main title section-->
+    <section class="title-bar-container">
+      <h1 id="top-title">Pokémon | My Pokédex</h1>
+    </section>
+    <!--Container for filter, sortlist and search bar-->
+    <section class="filter-sort-search-container">
+      <div id="filter-container">
+        <!--Filter Pokemon by Region section-->
+        <div id="filter-region-container">
+          <label for="filter-region">Filter Region</label>
+          <select id="filter-region">
+            <option value="all">All</option>
+            <option value="Kanto">Kanto</option>
+            <option value="Johto">Johto</option>
+            <option value="Hoenn">Hoenn</option>
+            <option value="Sinnoh">Sinnoh</option>
+          </select>
+        </div>
+        <!--Filter Pokemon by Type section-->
+        <div id="filter-type-container">
+          <label for="filter-type">Filter Type</label>
+          <select id="filter-type">
+            <option value="all">All</option>
+            <option value="Bug">Bug</option>
+            <option value="Electric">Electric</option>
+            <option value="Fire">Fire</option>
+            <option value="Flying">Flying</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Grass">Grass</option>
+            <option value="Ice">Ice</option>
+            <option value="Normal">Normal</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Rock">Rock</option>
+            <option value="Water">Water</option>
+          </select>
+        </div>
+      <!--SortList section-->
+      <div id="sort-container">
+        <label for="sortlist">Sort by</label>
+        <select id="sortlist">
+          <option value="nameasc">Name ascending</option>
+          <option value="namedesc">Name descending</option>
+          <option value="idasc">Id ascending</option>
+          <option value="iddesc">Id descending</option>
+          <option value="maxcpasc">Max CP ascending</option>
+          <option value="maxcpdesc">Max CP descending</option>
+        </select>
+      </div>
+      <!--Search Bar section-->
+      <div id="search-container">
+        <input class="input" id="search-bar" type="text" placeholder="  Search by name...">
+        <button id="search-btn">Ok</button>
+      </div>
+    </section>
+    <!--Container for all cards-->
+      <section id="card-container"></section>
+    <!--JS here-->
+    <script type="text/JavaScript" src="script.js"></script>
+  </body>
 </html>
