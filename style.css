@@ -181,7 +181,8 @@ label{
     background-color:rgb(55, 105, 143);
 }
 .card-img{
-    width:60%;
+    width:50%;
+    object-fit: contain;
 }
 /* classes for pokemon type colors */
 .grass {
