@@ -39,13 +39,15 @@ a {
     padding: 8px 20px;
     font-weight: bold;
     border-style: none;
-    border: 1px solid #1073dc;
+    border: 1px solid #d6d6d6;
     cursor:pointer;
-    transition: .3s ease-in;
+    transition: .1s ease-in;
 }
 #login:hover{
-    background-color:#f0eba1;
-    
+    background-color:rgb(252, 252, 252);
+}
+a:hover{
+    color:#ffd900;
 }
 /*top title (h1) section */
 #top-title{
@@ -73,12 +75,16 @@ a {
 }
 #filter-container{
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width: 700px;
+    margin: 0;
     text-align: center;
     border-radius: 15px;
     color:#fff;
+    flex-wrap: wrap;
+    gap:4px;
+    min-width: 50%;
+
 }
 #sort-container{
     display: flex;
@@ -99,7 +105,7 @@ label{
 }
 #search-bar{
     border-radius: 10px;
-    width: 250px;
+    width: 120px;
     height: 25px;
     margin-top: 10px;
     
@@ -181,7 +187,7 @@ label{
     background-color:rgb(55, 105, 143);
 }
 .card-img{
-    width: 50%;
+    height: 30%;
 }
 /* classes for pokemon type colors */
 .grass {
@@ -274,7 +280,7 @@ label{
     }
 
     .card-img{
-        width: 40%;
+        width: 30%;
     }
 
     .card-heading{
